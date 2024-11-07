@@ -4,6 +4,7 @@ services:
   postgres:
     image: postgres:latest
     container_name: finance-ai-database
+    user: "1000:1000" # Adiciona permissão do usuário
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -15,3 +16,8 @@ services:
 
 volumes:
   postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/.postgres_data
