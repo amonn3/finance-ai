@@ -21,7 +21,7 @@ const SummaryCards = async ({
   expensesTotal,
 }: SummaryCards) => {
   return (
-    <div className="space-y-6">
+    <div>
       <div className="space-y-6"></div>
       {/* primeiro card */}
       <SummaryCard
