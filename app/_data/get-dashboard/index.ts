@@ -86,8 +86,13 @@ export const getDashboard = async (month: string) => {
     orderBy: {
       date: "desc",
     },
-    take: 20,
+    take: 10,
   });
+
+  const parsedTransactions = lastTransactions.map((transaction) => ({
+    ...transaction,
+    amount: Number(transaction.amount),
+  }));
 
   return {
     balance,
@@ -96,6 +101,6 @@ export const getDashboard = async (month: string) => {
     expensesTotal,
     typesPercentage,
     totalExpensePerCategory,
-    lastTransactions,
+    lastTransactions: parsedTransactions,
   };
 };

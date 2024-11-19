@@ -37,7 +37,7 @@ export const generateAiReport = async ({ month }: GenerateAiReportSchema) => {
   const content = `Gere um relatório com insights sobre minhas finanças, com dicas e orientações de como melhorar minha vida financeira. As transações estão divididas por ponto e vírgula. A estrutura de cada uma é {DATA}-{TIPO}-{VALOR}-{CATEGORIA}. São elas: ${transactions
     .map(
       (transaction) =>
-        `${transaction.date.toLocaleDateString("pt-BR")}-R$${transaction.amount}-${transaction.type}-${transaction.category}`,
+        `${transaction.date.toLocaleDateString("pt-BR")}-R$${Number(transaction.amount)}-${transaction.type}-${transaction.category}`,
     )
     .join(";")}`;
 

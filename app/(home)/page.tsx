@@ -10,6 +10,7 @@ import ExpensesPerCategory from "@/app/(home)/_components/expenses-per-category"
 import LastTransactions from "@/app/(home)/_components/last-transactions";
 import { canUserAddTransaction } from "@/app/_data/can-user-add-transaction";
 import AiReportsButton from "./_components/ai-reports-button";
+import { Decimal } from "@prisma/client/runtime/library";
 interface HomeProps {
   searchParams: {
     month: string;
@@ -62,7 +63,12 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
               />
             </div>
           </div>
-          <LastTransactions lastTransactions={dashboard.lastTransactions} />
+          <LastTransactions
+            lastTransactions={dashboard.lastTransactions.map((transaction) => ({
+              ...transaction,
+              amount: new Decimal(transaction.amount),
+            }))}
+          />
         </div>
       </div>
     </>
