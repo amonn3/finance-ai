@@ -8,7 +8,8 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "vercel-build": "rm -rf node_modules/@prisma/client && prisma generate && next build"
   },
   "dependencies": {
     "@clerk/nextjs": "5.7.5",
