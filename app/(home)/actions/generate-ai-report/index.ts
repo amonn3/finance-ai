@@ -25,11 +25,12 @@ export const generateAiReport = async ({ month }: GenerateAiReportSchema) => {
     apiKey: process.env.OPENAI_API_KEY,
   });
   // 1. Get all transactions
+  const year = new Date().getFullYear();
   const transactions = await db.transaction.findMany({
     where: {
       date: {
-        gte: new Date(`2024-${month}-01`),
-        lte: new Date(`2024-${month}-31`),
+        gte: new Date(`${year}-${month}-01`),
+        lte: new Date(`${year}-${month}-31`),
       },
     },
   });

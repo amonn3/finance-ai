@@ -16,6 +16,10 @@ pnpm dev
 bun dev
 ```
 
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+npx prisma studio
+startar a imagem docker do banco de dados postgres:latest
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
